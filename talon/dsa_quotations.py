@@ -304,8 +304,8 @@ def process_marked_lines(lines, markers, return_flags=[False, -1, -1]):
     # cut out text lines coming after splitter if there are no markers there
     # quotation = re.search('(se*)+((t|f)+e*)+', markers)
 
-    # cut out text lines coming after splitter
-    quotation = re.search('(se*)+', markers)
+    # cut out text lines coming after splitter or a marker (>)
+    quotation = re.search('(m)+|(se*)+', markers)
     if quotation:
         return_flags[:] = [True, quotation.start(), len(lines)]
         return lines[:quotation.start()]
